@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.palmwifi.ktv.views.RelativeHomeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/rl_home_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/h_57"
+        android:layout_marginLeft="@dimen/w_57"
+        android:layout_marginRight="@dimen/w_33"
+        android:layout_marginTop="@dimen/h_57"
+        android:src="@drawable/ic_search" />
+
+    <EditText
+        android:id="@+id/tv_input"
+        android:layout_width="@dimen/w_453"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/img_search"
+        android:layout_marginTop="@dimen/h_9"
+        android:layout_toRightOf="@id/img_search"
+        android:background="@null"
+        android:ellipsize="end"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center_vertical"
+        android:hint="请输入首字母"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/h_30" />
+
+    <com.open.androidtvwidget.keyboard.SkbContainer
+        android:id="@+id/skbContainer"
+        android:layout_width="@dimen/w_595"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/img_search"
+        android:layout_marginRight="@dimen/w_100" />
+
+    <FrameLayout
+        android:layout_width="@dimen/w_1170"
+        android:layout_height="@dimen/h_50"
+        android:layout_alignTop="@id/img_search"
+        android:layout_marginBottom="@dimen/h_15"
+        android:layout_marginLeft="@dimen/w_39"
+        android:layout_marginRight="@dimen/w_50"
+        android:layout_toRightOf="@id/skbContainer">
+
+        <com.open.androidtvwidget.view.SmoothHorizontalScrollView
+            android:id="@+id/hscroll_view"
+            android:layout_width="@dimen/w_1170"
+            android:layout_height="@dimen/h_50"
+
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:fillViewport="false"
+            android:scrollbars="none">
+
+            <com.open.androidtvwidget.view.OpenTabHost
+                android:id="@+id/openTabHost"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/h_50" />
+        </com.open.androidtvwidget.view.SmoothHorizontalScrollView>
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginLeft="@dimen/w_39"
+        android:layout_marginRight="@dimen/w_50"
+        android:layout_toRightOf="@id/skbContainer">
+
+        <com.open.androidtvwidget.recycler.TvRecyclerView
+            android:id="@+id/rv_home_hot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/w_110"
+            android:layout_marginRight="@dimen/w_112"
+            android:layout_marginTop="@dimen/h_114"
+            android:padding="@dimen/w_10"
+            app:tv_loadMoreBeforehandCount="5"
+            android:scrollbars="none" />
+
+
+        <com.palmwifi.ktv.views.VerticalProgressBar
+            android:id="@+id/verticalProgressBar"
+            style="@style/recyclerProgressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/rv_home_hot"
+            android:layout_marginBottom="@dimen/h_55"
+            android:layout_marginRight="@dimen/w_39"
+            android:maxWidth="@dimen/w_8"
+            android:minWidth="@dimen/w_8" />
+
+        <TextView
+            android:id="@+id/tv_pager_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/h_40"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/w_32" />
+
+    </RelativeLayout>
+
+
+</com.palmwifi.ktv.views.RelativeHomeLayout>

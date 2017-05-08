@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#cccccc</color>
+    <color name="colorPrimaryDark">#F44336</color>
+    <color name="colorAccent">#F44336</color>
+    <color name="white">#f0f0f0</color>
+    <color name="main_green">#44e36a</color>
+    <color name="main_dark_blue">#6264e0</color>
+    <color name="main_pink">#e64eab</color>
+    <color name="main_orange">#f2772f</color>
+    <color name="main_yellow">#fedf20</color>
+    <color name="main_blue">#54aeff</color>
+    <color name="main_recycler_bg">#314887</color>
+    <color name="main_translucent">#80000000</color>
+</resources>

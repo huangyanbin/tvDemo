@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_item_recycler"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/singer_item_selector"
+    android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img_singer_icon"
+        android:layout_width="@dimen/w_160"
+        android:layout_height="@dimen/w_156"
+        fresco:actualImageScaleType="centerCrop"
+        fresco:placeholderImage="@drawable/bg_singer_icon"
+        android:layout_marginTop="@dimen/h_17"
+        android:layout_marginBottom="@dimen/h_23"
+        fresco:roundedCornerRadius="@dimen/w_12"/>
+    <TextView
+        android:id="@+id/tv_singer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/h_19"
+        android:textColor="@color/white"
+        android:textSize="@dimen/h_31"
+        />
+</LinearLayout>

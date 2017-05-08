@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_home_date"
+        style="@style/head_bar_title_style"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/w_60"
+        android:layout_marginTop="@dimen/h_17"
+        android:focusable="false"
+        android:text="2017年3月21日" />
+
+    <TextView
+        android:id="@+id/tv_home_week"
+        style="@style/head_bar_title_style"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/w_34"
+        android:layout_marginTop="@dimen/h_17"
+        android:layout_toRightOf="@id/tv_home_date"
+        android:focusable="false"
+        android:text="星期二" />
+
+
+    <TextView
+        android:id="@+id/tv_home_time"
+        style="@style/head_bar_title_style"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/h_17"
+        android:text="17:30" />
+
+
+    <TextView
+        android:id="@+id/tv_home_personal_center"
+        style="@style/head_bar_title_style"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/w_50"
+        android:layout_marginTop="@dimen/h_7"
+        android:background="@drawable/base_item_selector"
+        android:drawableLeft="@drawable/ic_personal_selector"
+        android:drawablePadding="@dimen/w_10"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:padding="@dimen/w_10"
+        android:text="个人中心"/>
+</RelativeLayout>

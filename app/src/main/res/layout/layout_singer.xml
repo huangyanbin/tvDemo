@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/img_search"
+    android:layout_marginLeft="@dimen/w_39"
+    android:layout_marginRight="@dimen/w_50"
+    android:layout_toRightOf="@id/skbContainer">
+
+    <com.open.androidtvwidget.recycler.TvRecyclerView
+        android:id="@+id/rv_home_hot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/w_143"
+        android:layout_marginRight="@dimen/w_112"
+        android:scrollbars="none" />
+
+
+    <com.palmwifi.ktv.views.VerticalProgressBar
+        android:id="@+id/verticalProgressBar"
+        style="@style/recyclerProgressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/rv_home_hot"
+        android:layout_marginBottom="@dimen/h_55"
+        android:layout_marginRight="@dimen/w_39"
+        android:maxWidth="@dimen/w_8"
+        android:minWidth="@dimen/w_8" />
+
+    <TextView
+        android:id="@+id/tv_pager_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/h_59"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text="1/3"
+        android:textColor="@color/white"
+        android:textSize="@dimen/w_32" />
+
+</RelativeLayout>

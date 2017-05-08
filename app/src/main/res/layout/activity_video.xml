@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+
+    <com.palmwifi.ktv.views.FullVideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+
+
+    <ImageView
+        android:id="@+id/img_video_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/h_114"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="visible"
+        android:src="@drawable/bg_rectangle_unfoucs" />
+
+   <!-- <ImageView
+        android:id="@+id/img_video_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/h_114"
+        android:layout_marginRight="@dimen/w_154"
+        android:layout_toLeftOf="@id/img_video_pause"
+        android:focusable="true"
+        android:background="@drawable/base_item_selector"
+        android:focusableInTouchMode="true"
+        android:src="@drawable/ic_video_speed_per_selector" />
+
+    <ImageView
+        android:id="@+id/img_video_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/h_114"
+        android:layout_marginLeft="@dimen/w_154"
+        android:layout_toRightOf="@id/img_video_pause"
+        android:focusable="true"
+        android:background="@drawable/base_item_selector"
+        android:focusableInTouchMode="true"
+        android:src="@drawable/ic_video_speed_next_selector" />-->
+
+
+   <!-- <FrameLayout
+        android:id="@+id/ll_video_slide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/h_118"
+        android:focusable="false"
+        android:visibility="gone"
+        android:focusableInTouchMode="false"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_video_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/w_15"
+            android:layout_marginTop="@dimen/h_18"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:src="@drawable/ic_slide_close_selector" />
+
+        <com.open.androidtvwidget.leanback.recycle.RecyclerViewTV
+            android:id="@+id/rv_video_play"
+            android:layout_width="@dimen/w_562"
+            android:layout_height="@dimen/h_718"
+            android:layout_marginLeft="@dimen/w_70"
+            android:background="@color/main_translucent"
+            android:focusable="false" />
+    </FrameLayout>-->
+</RelativeLayout>
+

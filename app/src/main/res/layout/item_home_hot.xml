@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/base_item_selector"
+    android:id="@+id/rl_item_recycler"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_height="@dimen/h_70">
+    
+    <TextView
+        android:id="@+id/tv_song_name"
+        android:layout_width="wrap_content"
+        android:text="美人鱼"
+        android:layout_height="@dimen/h_70"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/h_28"
+        android:maxLines="1"
+        android:layout_marginLeft="@dimen/w_35"
+        />
+
+
+    <ImageView
+        android:id="@+id/img_hot_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/w_18"
+        android:src="@drawable/ic_home_fav_selector"
+        />
+
+    <ImageView
+        android:id="@+id/img_hot_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/w_28"
+        android:layout_toLeftOf="@id/img_hot_fav"
+        android:src="@drawable/ic_home_play_selector"
+        />
+</RelativeLayout>

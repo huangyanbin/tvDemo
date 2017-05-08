@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/base_item_selector"
+    android:focusable="true"
+    android:id="@+id/rl_item_recycler"
+    android:focusableInTouchMode="true"
+    android:layout_height="@dimen/h_130">
+    
+    <TextView
+        android:id="@+id/tv_song_name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/h_130"
+        android:gravity="center"
+        android:text="美人鱼"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/h_34"
+        android:maxLines="1"
+        android:layout_marginLeft="@dimen/w_38"
+        />
+
+    <ImageView
+        android:id="@+id/img_recommend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_search_recommend"
+        android:layout_toRightOf="@id/tv_song_name"
+        android:layout_marginTop="@dimen/h_11"
+        />
+
+    <TextView
+        android:id="@+id/tv_singer"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/h_110"
+        android:gravity="center"
+        android:text="周杰伦"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/h_28"
+        android:maxLines="1"
+        />
+
+    <ImageView
+        android:id="@+id/img_hot_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/w_45"
+        android:src="@drawable/ic_fav_selector"
+        />
+
+    <ImageView
+        android:id="@+id/img_hot_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/w_40"
+        android:src="@drawable/ic_play_selector"
+        android:layout_toLeftOf="@id/img_hot_fav"
+        />
+</RelativeLayout>

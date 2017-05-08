@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.palmwifi.ktv.views.MagicTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:qwerjk="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/base_item_selector"
+    android:paddingLeft="@dimen/w_15"
+    android:paddingRight="@dimen/w_15"
+    android:paddingBottom="@dimen/w_5"
+    android:textColor="@color/white"
+    android:textSize="@dimen/h_32"
+    qwerjk:outerShadowColor="#FF0088ff"
+    qwerjk:outerShadowDy="3"
+    qwerjk:outerShadowRadius="10"
+    qwerjk:strokeJoinStyle="round"
+    qwerjk:strokeWidth="5" />

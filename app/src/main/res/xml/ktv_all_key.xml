@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 全键盘 -->
+<Keyboard
+    bg_res="@drawable/bg_rectangle_unfoucs"
+    key_left_padding="@dimen/w_14"
+    key_bg_res="@drawable/bg_key_normal"
+    key_press_res="@drawable/bg_key_focus"
+    key_select_res="@drawable/bg_key_focus"
+    key_text_color="#f0f0f0"
+    key_text_size="@dimen/w_30"
+    key_top_padding="@dimen/h_14"
+    key_height="@dimen/h_100"
+    key_width="@dimen/w_100"
+    start_pos_x="@dimen/w_10"
+    start_pos_y="@dimen/h_10"
+    left_right_move="false"
+    top_bottom_move="false" >
+
+    <!-- 第1行 -->
+    <row>
+        <keys
+            labels="A|B|C|D|E"
+            splitter="|" />
+    </row>
+
+    <!-- 第2行 -->
+    <row>
+        <keys
+            labels="F|G|H|I|J"
+            splitter="|" />
+    </row>
+
+    <!-- 第3行 -->
+    <row>
+        <keys
+            labels="K|L|M|N|0"
+            splitter="|" />
+    </row>
+
+    <!-- 第4行 -->
+    <row>
+        <keys
+            labels="P|Q|R|S|T"
+            splitter="|" />
+    </row>
+
+    <!-- 第5行 -->
+    <row>
+        <keys
+            labels="U|V|W|X|Y"
+            splitter="|" />
+    </row>
+    <!-- 第4行 -->
+    <row>
+        <keys
+            labels="Z|1|2|3|4"
+            splitter="|" />
+    </row>
+    <!-- 第5行 -->
+    <row>
+        <keys
+            labels="5|6|7|8|9"
+            splitter="|" />
+    </row>
+
+
+    <row>
+        <key
+            key_label="0" />
+
+        <key
+            key_code="@string/keycode_del"
+            key_icon="@drawable/ic_search_delete"
+            key_width="@dimen/w_210"/>
+
+    </row>
+
+</Keyboard>

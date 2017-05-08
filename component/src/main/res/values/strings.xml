@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">fragmention</string>
+
+    <string name="empty_loading_tip">正在努力加载中</string>
+    <string name="empty_loading_failure_tip">网络请求失败，点击重试</string>
+    <string name="empty_loading_no_data_tip">暂无数据</string>
+    <string name="net_connection_error">网络请求失败，请重试！</string>
+    <string name="json_parse_error">数据解析失败</string>
+    <string name="no_more">--------已显示全部资源--------</string>
+    <string name="duration" translatable="false">350</string>
+    <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
+    <string name="pull_to_refresh_release_label">松开立即刷新</string>
+    <string name="pull_to_refresh_refreshing_label">正在刷新数据中...</string>
+    <string name="pull_to_refresh_header_completed">刷新成功</string>
+</resources>

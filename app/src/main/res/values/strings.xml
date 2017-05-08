@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">娱乐无限</string>
+
+    <!-- 键盘自定义按键，这只是DEMO，你可以自定义自己的 -->
+    <string name="keycode_space">62</string> <!-- 空格 -->
+    <string name="keycode_center">66</string> <!-- 回车 -->
+    <string name="keycode_back">4</string> <!-- 返回 -->
+    <string name="keycode_left">21</string> <!-- 左边 -->
+    <string name="keycode_right">22</string> <!-- 右边 -->
+    <string name="keycode_del">67</string> <!-- 删除 -->
+    <string name="fzlt_zhun_hei">FZLTZHUNHEI_GBK.ttf</string>
+    <string name="fzlt_cu_hei">FZLTHC_GBK.ttf</string>
+
+    <string name="nav_tab_normal_ttf">@string/fzlt_zhun_hei</string>
+    <string name="nav_tab_focus_ttf">@string/fzlt_cu_hei</string>
+    <string name="delete_fav_tip">是否删除收藏？</string>
+    <string name="cancel_orider">退订会员成功</string>
+    <string name="search_empty_tip">文本已空</string>
+    <string name="exit_tip">再按一次退出</string>
+    <string name="vip_tip">订购VIP,畅享海量MV</string>
+    <string name="pay_tip">您即将订购15元/月的娱乐无限业务，\n是否确定?</string>
+    <string name="cancel_tip">您即将退订娱乐无限业务，\n是否确定?</string>
+    <string name="personal_no_vip_tip">娱乐无限是针对家庭IPTV用户提供的一款卡拉OK软件，用户可在家中观看及演唱\n用户仅需15元/月，即可观看娱乐无限万首MV资源</string>
+    <string name="personal_vip_tip">尊敬的VIP\n账号：%s，您可以畅享娱乐无限万首MV资源</string>
+    <string name="personal_pay">15元/月\n立即订购</string>
+    <string name="personal_cancel">立即退订</string>
+    <string name="pay_suc">支付成功，您已是VIP会员!</string>
+    <string name="has_fav">已收藏</string>
+    <string name="cancel_fav">取消收藏</string>
+    <string name="no_search_song_tip">搜索不到相关歌曲</string>
+    <string name="start_search_song">开始搜索之旅吧！</string>
+    <string name="no_search_singer_tip">搜索不到相关歌星</string>
+    <string name="start_search_singer">开始搜索之旅吧！</string>
+    <string name="welcome_vip_tip">尊敬VIP会员,欢迎您回来！</string>
+    <string name="init_suc">初始化成功</string>
+    <string name="ording">正在订购中...</string>
+    <string name="unsub">正在退订中...</string>
+</resources>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+    <com.palmwifi.ktv.views.RelativeHomeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rl_home_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tv_home_date"
+            style="@style/head_bar_title_style"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/w_60"
+            android:layout_marginTop="@dimen/h_17"
+            android:focusable="false"
+            android:text="2017年3月21日" />
+
+        <TextView
+            android:id="@+id/tv_home_week"
+            style="@style/head_bar_title_style"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/w_34"
+            android:layout_marginTop="@dimen/h_17"
+            android:layout_toRightOf="@id/tv_home_date"
+            android:focusable="false"
+            android:text="星期二" />
+
+
+        <TextView
+            android:id="@+id/tv_home_time"
+            style="@style/head_bar_title_style"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/h_17"
+            android:text="17:30" />
+
+        <View
+            android:id="@+id/v_video_shape"
+            android:layout_width="@dimen/w_900"
+            android:layout_height="@dimen/h_600"
+            android:layout_marginLeft="@dimen/w_60"
+            android:layout_marginTop="@dimen/h_85"
+            android:focusable="true"
+            android:background="@drawable/base_item_selector"
+            android:focusableInTouchMode="true" />
+
+        <com.palmwifi.ktv.views.HomeVideoView
+            android:id="@+id/video_view"
+            android:layout_width="@dimen/w_900"
+            android:layout_height="@dimen/h_600"
+            android:layout_marginLeft="@dimen/w_60"
+            android:layout_marginTop="@dimen/h_85"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_home_new_recommend"
+            style="@style/home_card_view_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/h_8"
+            android:layout_marginLeft="@dimen/w_6"
+            android:layout_marginRight="@dimen/w_58"
+            android:layout_marginTop="@dimen/h_85"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/main_green">
+
+            <TextView
+                style="@style/home_card_title_style"
+                android:text="新歌推荐" />
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_home_rank"
+            style="@style/home_card_view_style"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/cv_home_new_recommend"
+            android:layout_marginBottom="@dimen/h_8"
+            android:layout_marginLeft="@dimen/w_6"
+            android:layout_marginRight="@dimen/w_58"
+            app:cardBackgroundColor="@color/main_dark_blue">
+
+            <TextView
+                style="@style/home_card_title_style"
+                android:text="热歌排行榜" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_home_search"
+            style="@style/home_card_view_style2"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/cv_home_rank"
+            android:layout_marginLeft="@dimen/w_60"
+            android:layout_marginRight="@dimen/w_4"
+            app:cardBackgroundColor="@color/main_blue">
+
+            <TextView
+                style="@style/home_card_title_style"
+                android:text="拼音点歌" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_home_singer"
+            style="@style/home_card_view_style2"
+            android:layout_below="@id/cv_home_rank"
+            android:layout_marginLeft="@dimen/w_4"
+            android:layout_marginRight="@dimen/w_4"
+            android:layout_toRightOf="@id/cv_home_search"
+            app:cardBackgroundColor="@color/main_yellow">
+
+            <TextView
+                style="@style/home_card_title_style"
+                android:text="歌星" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_home_fav"
+            style="@style/home_card_view_style2"
+            android:layout_below="@id/cv_home_rank"
+            android:layout_marginLeft="@dimen/w_4"
+            android:layout_marginRight="@dimen/w_4"
+            android:layout_toRightOf="@id/cv_home_singer"
+            app:cardBackgroundColor="@color/main_orange">
+
+            <TextView
+                style="@style/home_card_title_style"
+                android:text="收藏" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_home_history"
+            style="@style/home_card_view_style2"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/cv_home_rank"
+            android:layout_marginLeft="@dimen/w_4"
+            android:layout_marginRight="@dimen/w_60"
+            app:cardBackgroundColor="@color/main_pink">
+
+            <TextView
+                style="@style/home_card_title_style"
+                android:text="历史记录" />
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_home_personal_center"
+            style="@style/head_bar_title_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/w_50"
+            android:layout_marginTop="@dimen/h_7"
+            android:background="@drawable/base_item_selector"
+
+            android:drawableLeft="@drawable/ic_personal_selector"
+            android:drawablePadding="@dimen/w_10"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:padding = "@dimen/w_10"
+            android:text="个人中心" />
+
+
+        <com.open.androidtvwidget.recycler.TvRecyclerView
+            android:id="@+id/rv_home_hot"
+            android:layout_width="@dimen/w_456"
+            android:layout_height="@dimen/h_600"
+            android:padding="@dimen/w_10"
+            android:layout_alignTop="@id/cv_home_new_recommend"
+            android:layout_toLeftOf="@id/cv_home_new_recommend"
+            android:background="@color/main_recycler_bg"
+            android:scrollbars="none" />
+
+
+    </com.palmwifi.ktv.views.RelativeHomeLayout>
+
+

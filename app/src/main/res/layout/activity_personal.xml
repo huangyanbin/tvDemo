@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.palmwifi.ktv.views.RelativeHomeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/rl_home_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+
+
+    <ImageView
+        android:id="@+id/btn_buy"
+        android:layout_width="@dimen/w_280"
+        android:layout_height="@dimen/h_170"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/h_166"
+        android:src="@drawable/ic_personal_vip_selector"
+        android:focusable="true"
+        android:clickable="true"
+        android:focusableInTouchMode="true" />
+
+    <TextView
+        android:id="@+id/tv_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_buy"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/w_51"
+        android:text="@string/personal_no_vip_tip"
+        android:textSize="@dimen/h_30"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/img_blur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/perasonal_bg_blur"
+        android:visibility="invisible"
+        />
+
+</com.palmwifi.ktv.views.RelativeHomeLayout>
