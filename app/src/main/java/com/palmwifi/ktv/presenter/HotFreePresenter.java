@@ -3,7 +3,7 @@ package com.palmwifi.ktv.presenter;/**
  */
 
 import android.app.Activity;
-import android.content.Context;
+import android.util.Log;
 import android.text.TextUtils;
 
 import com.palmwifi.http.AsyncCallback;

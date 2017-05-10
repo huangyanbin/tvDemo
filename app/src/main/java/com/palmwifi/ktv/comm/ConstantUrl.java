@@ -30,4 +30,5 @@ public class ConstantUrl {
    public static final String PLAY_RECORD =HOST +"openAPIAction_songPaySave";
 
     public static final String PAY_RECORD =HOST+"openAPIAction_rechargeSave";
+
 }

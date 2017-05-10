@@ -108,6 +108,33 @@ public class ViewFocusHelper {
         }
         return false;
     }
+
+
+    /**
+     * 处理DOWN事件.
+     */
+    public boolean onSoftKeyDown1(int keyCode, KeyEvent event) {
+        if(mListener == null ) {
+            return false;
+        }
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_LEFT: // 左
+                return mListener.toLeft(mOldFocus);
+            case KeyEvent.KEYCODE_DPAD_RIGHT: // 右
+                return mListener.toRight(mOldFocus);
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                return mListener.toDown(mOldFocus);
+            case KeyEvent.KEYCODE_DPAD_UP:
+                return mListener.toTop(mOldFocus);
+            case KeyEvent.KEYCODE_BACK:
+                return mListener.toBack(mOldFocus);
+            case KeyEvent.KEYCODE_ENTER:
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+                return mListener.toMenu(mOldFocus);
+
+        }
+        return false;
+    }
 /*
     *//**
      * 处理UP的事件.

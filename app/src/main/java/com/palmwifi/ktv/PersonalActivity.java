@@ -44,7 +44,6 @@ public class PersonalActivity extends BaseActivity<PayContract.Presenter> implem
     @BindView(R.id.img_blur)
     ImageView imgBlur;
     CommDialog dialog;
-    //private ViewFocusHelper mSharkHelper;
 
 
     public static void startActivity(Context context) {

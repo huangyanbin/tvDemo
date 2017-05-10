@@ -1,15 +1,14 @@
 package com.palmwifi.ktv;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.format.DateUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
@@ -33,11 +32,9 @@ import com.palmwifi.ktv.manager.VideoManager;
 import com.palmwifi.ktv.presenter.HotFreePresenter;
 import com.palmwifi.ktv.presenter.SongPresenter;
 import com.palmwifi.ktv.utils.ShakeUtils;
-import com.palmwifi.ktv.views.HomeVideoView;
-import com.pili.pldroid.player.AVOptions;
+import com.pili.pldroid.player.IMediaController;
+import com.pili.pldroid.player.widget.PLVideoTextureView;
 import com.sdk.commplatform.Commplatform;
-import com.shuyu.gsyvideoplayer.GSYVideoPlayer;
-import com.shuyu.gsyvideoplayer.utils.Debuger;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -57,7 +54,7 @@ import butterknife.OnClick;
  * </pre
  */
 public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implements HotFreeContract.View
-        ,OnSharkListener, OnItemFocusListener {
+        ,OnSharkListener, OnItemFocusListener,IMediaController {
 
 
     @BindView(R.id.rl_home_content)
@@ -71,28 +68,32 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
     @BindView(R.id.tv_home_personal_center)
     TextView tvHomePersonalCenter;
     @BindView(R.id.cv_home_new_recommend)
-    CardView cvHomeNewRecommend;
+    ImageView cvHomeNewRecommend;
     @BindView(R.id.cv_home_rank)
-    CardView cvHomeRank;
+    ImageView cvHomeRank;
     @BindView(R.id.cv_home_search)
-    CardView cvHomeSearch;
+    ImageView cvHomeSearch;
     @BindView(R.id.cv_home_singer)
-    CardView cvHomeSinger;
+    ImageView cvHomeSinger;
     @BindView(R.id.cv_home_fav)
-    CardView cvHomeFav;
+    ImageView cvHomeFav;
     @BindView(R.id.cv_home_history)
-    CardView cvHomeHistory;
+    ImageView cvHomeHistory;
     @BindView(R.id.rv_home_hot)
     TvRecyclerView mRecyclerView;
-    @BindView(R.id.video_view)
-    HomeVideoView videoPlayer;
+    @BindView(R.id.VideoView)
+    PLVideoTextureView mVideoView;
+    @BindView(R.id.LoadingView)
+    View mLoadingView;
+    @BindView(R.id.img_video_pause)
+    View mPauseView;
     @BindView(R.id.v_video_shape)
     View videoShapeView;
-    private VideoManager videoManager;
     private ViewFocusHelper mSharkHelper;
     private HotFreeAdapter mAdapter;
+    private VideoManager videoManager;
+
     private Handler mHandler = new Handler();
-    private boolean isGoFullScreen;
     private long mExitTime;
 
 
@@ -121,18 +122,17 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
                 } else {
                     mSharkHelper.onFocusView(newFocus, 1.0f);
                 }
-
             }
         });
-
-        Debuger.enable();
+        mVideoView.setBufferingIndicator(mLoadingView);
+        mLoadingView.setVisibility(View.VISIBLE);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 videoShapeView.requestFocus();
             }
         },500);
-
+        mPauseView.setVisibility(View.INVISIBLE);
     }
 
 
@@ -162,7 +162,6 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
         mLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setSelectedItemAtCentered(true);
-        mAdapter = new HotFreeAdapter(this, mRecyclerView, videoManager.getSongList());
         mAdapter.setOnItemFocusListener(this);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new OnItemClickListener() {
@@ -182,12 +181,7 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
                 PersonalActivity.startActivity(this);
                 break;
             case R.id.cv_home_search:
-               // SearchActivity.startActivity(this);
-                Intent intent = new Intent(this,PLVideoTextureActivity.class);
-                intent.putExtra("videoPath", "http://202.99.114.93/88888891/16/20170413/269097055/269097055.ts");
-                intent.putExtra("mediaCodec", AVOptions.MEDIA_CODEC_AUTO);
-                intent.putExtra("liveStreaming", 0);
-                startActivity(intent);
+                SearchActivity.startActivity(this);
                 break;
             case R.id.cv_home_rank:
                 SongListActivity.startActivity(this, SongPresenter.HOT);
@@ -207,8 +201,10 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
             case R.id.v_video_shape:
                 if(videoManager.isPlaying()){
                     videoManager.onPause();
+                    mPauseView.setVisibility(View.VISIBLE);
                 }else{
-                    videoManager.reset();
+                    videoManager.onResume();
+                    mPauseView.setVisibility(View.INVISIBLE);
                 }
                 break;
 
@@ -241,27 +237,7 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
         mAdapter.cancelFav(event.song);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if(videoManager !=null) {
-            videoManager.onPause();
-        }
-    }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        videoPlayer.setStandardVideoAllCallBack(null);
-        GSYVideoPlayer.releaseAllVideos();
-        Commplatform.getInstance().destroy();
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -323,12 +299,8 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
 
     @Override
     public boolean toBack(View view) {
-/*        if(isGoFullScreen){
-            GSYVideoPlayer.backFromWindowFull(this);
-            isGoFullScreen = false;
-            return true;
-        }*/
-        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+
+        if ((System.currentTimeMillis() - mExitTime) > 3000) {
             Toast.makeText(getApplicationContext(), getString(R.string.exit_tip)
                     +getString(R.string.app_name),Toast.LENGTH_SHORT).show();
             mExitTime = System.currentTimeMillis();
@@ -388,8 +360,9 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
                 Toast.makeText(this, getString(R.string.has_fav), Toast.LENGTH_SHORT).show();
             }
         } else {
-            Log.e("huang","play url:"+song.getUrl());
             HistoryHelper.addHistory(song);
+            mPauseView.setVisibility(View.INVISIBLE);
+            mLoadingView.setVisibility(View.VISIBLE);
             videoManager.play(position);
         }
         return true;
@@ -409,9 +382,12 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
 
     @Override
     public void getHotFreeSuc(List<Song> songList) {
-        videoManager = new VideoManager(videoPlayer, songList);
-        initRecyclerView();
+        mAdapter = new HotFreeAdapter(this, mRecyclerView, songList);
+        videoManager = new VideoManager(this,mVideoView,songList);
+        videoManager.setLoadingView(mLoadingView);
         videoManager.play();
+
+        initRecyclerView();
 
     }
 
@@ -429,5 +405,61 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
         if(isPay) {
             Toast.makeText(this, R.string.welcome_vip_tip, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(videoManager != null) {
+            videoManager.onPause();
+            mLoadingView.setVisibility(View.INVISIBLE);
+            mPauseView.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Commplatform.getInstance().destroy();
+        if(videoManager != null) {
+            videoManager.onDestroy();
+        }
+        videoManager = null;
+    }
+
+    @Override
+    public void setMediaPlayer(MediaPlayerControl mediaPlayerControl) {
+
+    }
+
+    @Override
+    public void show() {
+        mLoadingView.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void show(int i) {
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public boolean isShowing() {
+        return false;
+    }
+
+    @Override
+    public void setEnabled(boolean b) {
+
+    }
+
+    @Override
+    public void setAnchorView(View view) {
+
     }
 }

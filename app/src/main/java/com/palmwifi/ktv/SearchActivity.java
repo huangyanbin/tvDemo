@@ -3,12 +3,10 @@ package com.palmwifi.ktv;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,6 +30,7 @@ import com.open.androidtvwidget.recycler.OnItemFocusListener;
 import com.palmwifi.helper.BaseEmptyView;
 import com.palmwifi.ktv.adapter.SongAdapter;
 import com.palmwifi.ktv.bean.Song;
+import com.palmwifi.ktv.comm.Contract;
 import com.palmwifi.ktv.comm.UserManager;
 import com.palmwifi.ktv.constact.SearchContract;
 import com.palmwifi.ktv.helper.FavHelper;
@@ -286,9 +285,9 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
                 Toast.makeText(this, getString(R.string.has_fav), Toast.LENGTH_SHORT).show();
             }
         } else {
-            if(UserManager.getInstance().isVip()){
+            if(Contract.CLOSE_VIP || UserManager.getInstance().isVip()){
                 HistoryHelper.addHistory(song);
-                VideoActivity.startActivity(this, song);
+                PLVideoActivity.startActivity(this, song);
             }else{
 
                 Toast.makeText(this,getString(R.string.vip_tip),Toast.LENGTH_SHORT).show();

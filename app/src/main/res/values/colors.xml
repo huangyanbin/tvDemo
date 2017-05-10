@@ -10,6 +10,6 @@
     <color name="main_orange">#f2772f</color>
     <color name="main_yellow">#fedf20</color>
     <color name="main_blue">#54aeff</color>
-    <color name="main_recycler_bg">#314887</color>
+    <color name="main_recycler_bg">#40000000</color>
     <color name="main_translucent">#80000000</color>
 </resources>

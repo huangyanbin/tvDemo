@@ -1,18 +1,13 @@
 package com.palmwifi.ktv;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
@@ -27,6 +22,7 @@ import com.open.androidtvwidget.recycler.TvRecyclerView;
 import com.open.androidtvwidget.view.RelativeMainLayout;
 import com.palmwifi.base.BaseActivity;
 import com.palmwifi.helper.BaseEmptyView;
+import com.palmwifi.ktv.comm.Contract;
 import com.palmwifi.ktv.comm.UserManager;
 import com.palmwifi.ktv.constact.SongContract;
 import com.palmwifi.ktv.adapter.SongAdapter;
@@ -270,9 +266,9 @@ public class SongListActivity extends BaseActivity<SongContract.Presenter> imple
                 }
             }
         } else {
-            if(UserManager.getInstance().isVip()){
+            if(Contract.CLOSE_VIP || UserManager.getInstance().isVip()){
                 mPresenter.addHistory(song);
-                VideoActivity.startActivity(this, song);
+                PLVideoActivity.startActivity(this, song);
             }else{
                 Toast.makeText(this,getString(R.string.vip_tip),Toast.LENGTH_SHORT).show();
                PersonalActivity.startActivity(this);

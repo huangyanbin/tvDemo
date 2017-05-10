@@ -14,7 +14,8 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 
 
@@ -32,6 +33,7 @@
             android:name=".HomeActivity"
             android:configChanges="orientation|navigation|screenSize"
             android:launchMode="singleTask"
+            android:theme="@style/HomeTheme"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,10 +43,6 @@
 
         <activity
             android:name=".SearchActivity"
-            android:configChanges="orientation|navigation|screenSize"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".VideoActivity"
             android:configChanges="orientation|navigation|screenSize"
             android:screenOrientation="landscape" />
         <activity
@@ -61,7 +59,7 @@
             android:screenOrientation="landscape"
             android:theme="@style/PersonalTheme" />
         <activity
-            android:name=".PLVideoTextureActivity"
+            android:name=".PLVideoActivity"
             android:configChanges="orientation|navigation|screenSize"
             android:screenOrientation="landscape" />
         <activity

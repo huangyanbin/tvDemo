@@ -23,9 +23,6 @@ public class RelativeHomeLayout extends RelativeMainLayout {
 
     @Override
     public void bringChildToFront(View child) {
-        if(child instanceof HomeVideoView){
-            return;
-        }
         mWidgetTvViewBring.bringChildToFront(this, child);
     }
 }

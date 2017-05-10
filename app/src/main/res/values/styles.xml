@@ -11,7 +11,9 @@
         <item name="android:windowIsTranslucent">false</item>
     </style>
 
-
+    <style name="HomeTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/home_bg2</item>
+    </style>
     <!-- Base application theme. -->
     <style name="PersonalTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/perasonal_bg</item>

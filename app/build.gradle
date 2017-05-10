@@ -11,9 +11,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-       ndk {
-            abiFilters 'armeabi'
-        }
     }
 
 
@@ -105,7 +102,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':component')
     compile project(':TVwidget')
-    compile 'com.shuyu:GSYVideoPlayer:1.6.4'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.facebook.fresco:fresco:0.12.0'

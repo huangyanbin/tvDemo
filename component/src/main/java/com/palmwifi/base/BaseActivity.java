@@ -6,7 +6,6 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 
 import com.palmwifi.fragmention.R;
 import com.palmwifi.mvp.IPresenter;
@@ -39,7 +38,7 @@ public abstract class BaseActivity< P extends  IPresenter> extends SupportActivi
     protected P mPresenter;
 
     private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
-    private Unbinder mUnbinder;
+    private Unbinder mUnBinder;
 
     @Override
     @NonNull
@@ -70,19 +69,13 @@ public abstract class BaseActivity< P extends  IPresenter> extends SupportActivi
         if(useEventBus()) {
             EventBus.getDefault().register(this);
         }
-        StatusUtils.setBarStatusWhite(this,getStatusColor());
+        StatusUtils.fullScreen(this);
         setContentView(setLayoutID());
-        mUnbinder = ButterKnife.bind(this);
+        mUnBinder = ButterKnife.bind(this);
         initView(savedInstanceState);
         initData();
     }
-    /**
-     * 改变状态栏颜色
-     * @return
-     */
-    protected int getStatusColor(){
-        return ContextCompat.getColor(this,android.R.color.white);
-    }
+
     @Override
     @CallSuper
     protected void onStart() {
@@ -118,8 +111,8 @@ public abstract class BaseActivity< P extends  IPresenter> extends SupportActivi
         if(useEventBus())
             EventBus.getDefault().unregister(this);
         OkHttpUtils.getInstance().cancelTag(this);
-        if (mUnbinder != Unbinder.EMPTY)
-            mUnbinder.unbind();
+        if (mUnBinder != Unbinder.EMPTY)
+            mUnBinder.unbind();
         if(mPresenter != null)
             mPresenter.unSubscribe();
         super.onDestroy();

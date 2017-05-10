@@ -21,4 +21,6 @@ public class Contract {
 
     public static final String PRODUCT_TYPE ="2";
 
+    public static final boolean CLOSE_VIP = false;
+
 }
