@@ -5,6 +5,7 @@ package com.palmwifi.ktv.presenter;/**
 import android.app.Activity;
 import android.util.Log;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.palmwifi.http.AsyncCallback;
 import com.palmwifi.ktv.comm.Contract;
@@ -70,6 +71,7 @@ public class HotFreePresenter implements HotFreeContract.Presenter {
                     public void run() {
                         if (paramInt == ErrorCode.COM_PLATFORM_SUCCESS) {
                             view.initSuccess();
+
                         } else {
                             view.initFailure("初始化失败");
                         }
@@ -86,17 +88,18 @@ public class HotFreePresenter implements HotFreeContract.Presenter {
                 new CallbackListener<AuthResult>() {
 
                     @Override
-                    public void callback(final int code, AuthResult result) {
-                        //获取当前productID
-                        if(result != null && result.productInfos.length >0) {
-                            String productID =result.productInfos[0].productId;
-                            if(!TextUtils.isEmpty(productID)){
-                                Contract.PRODUCT_ID = productID;
-                            }
-                        }
+                    public void callback(final int code, final AuthResult result) {
+
                         context.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                //获取当前productID
+                                if(result != null && result.productInfos.length >0) {
+                                    String productID =result.productInfos[0].productId;
+                                    if(!TextUtils.isEmpty(productID)) {
+                                        Contract.ORDER_PRODUCT_ID = productID;
+                                    }
+                                 }
                                 if (code == ErrorCode.COM_PLATFORM_SUCCESS) {
                                     UserManager.getInstance().setVip(true);
                                     view.isHasPay(true);

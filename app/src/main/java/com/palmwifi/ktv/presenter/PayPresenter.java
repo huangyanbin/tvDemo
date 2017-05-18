@@ -3,6 +3,7 @@ package com.palmwifi.ktv.presenter;
 import android.app.Activity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.palmwifi.http.JsonCallback;
 import com.palmwifi.ktv.bean.BaseResult;
@@ -86,16 +87,16 @@ public class PayPresenter implements PayContract.Presenter {
 
                     @Override
                     public void callback(final int code, final AuthResult result) {
-                        //获取当前productID
-                        if(result != null && result.productInfos.length >0) {
-                            String productID =result.productInfos[0].productId;
-                            if(!TextUtils.isEmpty(productID)){
-                                Contract.PRODUCT_ID = productID;
-                            }
-                        }
+
                         context.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                if(result != null && result.productInfos.length >0) {
+                                    String productID = result.productInfos[0].productId;
+                                    if (!TextUtils.isEmpty(productID)) {
+                                        Contract.ORDER_PRODUCT_ID = productID;
+                                    }
+                                }
                                 if (code == ErrorCode.COM_PLATFORM_SUCCESS) {
                                     UserManager.getInstance().setVip(true);
                                     view.isHasPay(true);
@@ -114,7 +115,9 @@ public class PayPresenter implements PayContract.Presenter {
         tradeNo = getSecurityRandom().toString();//订单号
         CyclePayment cyclePayment = new CyclePayment();
         cyclePayment.setTradeNo(tradeNo);
-        cyclePayment.setProductId(Contract.PRODUCT_ID);
+        cyclePayment.setProductId(Contract.ORDER_PRODUCT_ID);
+        cyclePayment.setNotifyURL("www.DingGou.com");
+        cyclePayment.setUnsubNotifyURL("wwww.TuiDing.com");
         cyclePayment.setNote("娱乐无限VIP 15元/月");
         return cyclePayment;
     }
@@ -140,9 +143,6 @@ public class PayPresenter implements PayContract.Presenter {
                                     view.cancelPayFailure("已取消");
                                     sendPayRecord(false);
                                 } else {
-                                  /*  view.paySuccess();
-                                    UserManager.getInstance().saveVip(buyInfo.getTradeNo());
-                                    sendPayRecord(true);*/
                                     view.cancelPayFailure("很抱歉，支付失败！" );
                                     sendPayRecord(false);
                                 }
@@ -163,7 +163,7 @@ public class PayPresenter implements PayContract.Presenter {
     //发送到服务器付费记录
     private void sendPayRecord(boolean isSuc) {
         OkHttpUtils.get().url(ConstantUrl.PAY_RECORD).addParams("userid", UserManager.getInstance().getUserID())
-                .addParams("rtype", "2").addParams("issuc", isSuc ? "1" : "0").build().execute(
+                .addParams("rtype", Contract.PRODUCT_TYPE).addParams("issuc", isSuc ? "1" : "0").build().execute(
                 new JsonCallback<BaseResult>(provider) {
 
 
@@ -211,6 +211,7 @@ public class PayPresenter implements PayContract.Presenter {
                             public void run() {
                                 if (arg0 == ErrorCode.COM_PLATFORM_SUCCESS) {
                                     UserManager.getInstance().setVip(false);
+                                    UserManager.getInstance().setCancel(true);
                                     view.cancelPaySuccess();
                                 } else {
                                    /* UserManager.getInstance().setVip(false);

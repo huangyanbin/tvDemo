@@ -65,11 +65,11 @@ public abstract class BaseActivity< P extends  IPresenter> extends SupportActivi
     @CallSuper
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusUtils.fullScreen(this);
         lifecycleSubject.onNext(ActivityEvent.CREATE);
         if(useEventBus()) {
             EventBus.getDefault().register(this);
         }
-        StatusUtils.fullScreen(this);
         setContentView(setLayoutID());
         mUnBinder = ButterKnife.bind(this);
         initView(savedInstanceState);

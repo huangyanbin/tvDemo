@@ -8,6 +8,8 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import java.io.File;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
@@ -42,7 +44,7 @@ public class BaseApplication extends Application {
     /**
      * 初始化OKHttp
      */
-    public void initOkHttpClient(boolean isLogDisable, String logName,CacheInterceptor cacheInterceptor){
+    public OkHttpClient initOkHttpClient(boolean isLogDisable, String logName,String host,int port,CacheInterceptor cacheInterceptor){
 
         File cacheFile = new File(getExternalCacheDir(),"httpCache");
         Cache cache = new Cache(cacheFile,1024*1024*50);
@@ -54,10 +56,11 @@ public class BaseApplication extends Application {
                 .connectTimeout(10000, TimeUnit.MILLISECONDS)
                 .writeTimeout(10000,TimeUnit.MILLISECONDS)
                 .readTimeout(10000,TimeUnit.MILLISECONDS)
+                .proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, port)))
                 .addInterceptor(cacheInterceptor)
                 .cache(cache)
                 .build();
-        OkHttpUtils.initClient(okHttpClient);
+        return okHttpClient;
     }
 
 

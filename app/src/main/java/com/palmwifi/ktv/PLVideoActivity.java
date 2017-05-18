@@ -122,7 +122,8 @@ public class PLVideoActivity extends BaseActivity implements ViewFocusHelper.OnS
         videoManager.play();
 
         OkHttpUtils.get().url(ConstantUrl.PLAY_RECORD).addParams("userid", UserManager.getInstance().getUserID())
-                .addParams("isvip", UserManager.getInstance().isVip() ? "1" : "0").addParams("songid", videoManager.getPlaySong().getTid()).build().execute(
+                .addParams("isvip", UserManager.getInstance().isVip() ? "1" : "0")
+                .addParams("songid", videoManager.getPlaySong().getTid()).build().execute(
                 new JsonCallback<BaseResult>(this) {
 
 

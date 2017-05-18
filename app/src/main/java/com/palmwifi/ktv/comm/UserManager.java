@@ -18,6 +18,7 @@ public class UserManager {
     private static UserManager mInstance;
     private String tradeNo;
     private boolean isVip;
+    private boolean isCancel;
 
     public static UserManager getInstance() {
         if (mInstance == null) {
@@ -50,6 +51,7 @@ public class UserManager {
             mCursor.close();
         }
         tradeNo = PreferenceUtil.getString("tradeNO");
+        isCancel = PreferenceUtil.getBoolean("isCancel",false);
         if(tradeNo != null){
             isVip = true;
         }
@@ -90,11 +92,17 @@ public class UserManager {
             this.tradeNo = tradeNo;
             this.isVip = true;
             PreferenceUtil.putString("tradeNO",tradeNo);
+            setCancel(false);
         }
     }
 
     public String getTradeNo() {
         return tradeNo;
+    }
+
+    public void setCancel(boolean isCancel){
+        this.isCancel = isCancel;
+        PreferenceUtil.putBoolean("isCancel",isCancel);
     }
 
 }

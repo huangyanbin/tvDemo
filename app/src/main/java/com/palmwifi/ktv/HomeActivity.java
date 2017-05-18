@@ -32,6 +32,7 @@ import com.palmwifi.ktv.manager.VideoManager;
 import com.palmwifi.ktv.presenter.HotFreePresenter;
 import com.palmwifi.ktv.presenter.SongPresenter;
 import com.palmwifi.ktv.utils.ShakeUtils;
+import com.palmwifi.utils.BaseUtils;
 import com.pili.pldroid.player.IMediaController;
 import com.pili.pldroid.player.widget.PLVideoTextureView;
 import com.sdk.commplatform.Commplatform;
@@ -393,6 +394,7 @@ public class HomeActivity extends BaseActivity<HotFreeContract.Presenter> implem
 
     @Override
     public void initSuccess() {
+        //Toast.makeText(this, "初始化成功！", Toast.LENGTH_SHORT).show();
         mPresenter.authPay();
     }
 
